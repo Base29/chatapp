@@ -10,7 +10,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <message-container />
-                    <input-message />
+                    <input-message :room="currentRoom" />
                 </div>
             </div>
         </div>
@@ -28,6 +28,28 @@ import InputMessage from './inputMessage.vue'
             MessageContainer,
             InputMessage,
         },
+        data: function (){
+            return {
+                chartRooms: [],
+                currentRoom: [],
+                messages: []
+            }
+        },
+        methods: {
+            getRooms() {
+                axios.get('/chat/rooms').then(response => {
+                    this.chartRooms = response.data;
+                    this.setRoom(response.data[0]);
+                }).catch(error => console.log(error));
+            },
+
+            setRoom ( room ) {
+                this.currentRoom = room;
+            }
+        },
+        created() {
+            this.getRooms()
+        }
     }
                 MessageContainer
 </script>
