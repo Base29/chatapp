@@ -1,5 +1,5 @@
 <template>
-    <div>Chat Selection Container</div>
+    <div>Message Item Container</div>
 </template>
 <script>
 export default {

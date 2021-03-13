@@ -1,5 +1,5 @@
 <template>
-    <div>Container</div>
+    <div>Message Container</div>
 </template>
 <script>
 export default {
