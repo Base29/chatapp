@@ -45,6 +45,13 @@ import InputMessage from './inputMessage.vue'
 
             setRoom ( room ) {
                 this.currentRoom = room;
+                this.getMessages();
+            },
+
+            getMessages () {
+                axios.get('/chat/room/' + this.currentRoom.id + '/messages').then(response => {
+                    this.messages = response.data;
+                }).catch(error => console.log(error))
             }
         },
         created() {
